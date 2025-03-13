@@ -9,7 +9,7 @@
 
     <div class="col-md-6 mx-auto">
         <div class="card bg-danger" >
-            <h5 class="card-header fw-bold text-center" $font-family="sans-serif">Cadastro de Usuário</h5>
+            <h5 class="card-header fw-bold text-center" $font-family="sans-serif">Cadastro de Professor</h5>
             <div class="card-body">
                 <form wire:submit.prevent="store">
                     <div class="mb-3">
@@ -19,26 +19,20 @@
                     </div>
 
                     <div class="mb-3 fw-bold ">
-                        <label for="data_nascimento">Data de Nascimento</label>
-                        <input type="date" name="data_nascimento" id="data_nascimento" class="form-control"
-                            wire:model.defer="data_nascimento">
-                    </div>
-
-                    <div class="mb-3 fw-bold ">
-                        <label for="email">Email</label>
+                        <label for="email">email</label>
                         <input type="email" class="form-control" id="email" name="email"
                             placeholder="ex:xxx@xxx.com" wire:model.defer="email">
                     </div>
 
-                    <div class="mb-3">
-                        <label for="rm" class="form-label fw-bold">RM</label>
-                        <input type="text" class="form-control" id="rm" name="rm" placeholder="ex:****"
-                            wire:model.defer="rm">
+                    <div class="mb-3 fw-bold ">
+                        <label for="email">cpf</label>
+                        <input type="text" name="email" id="cpf" class="form-control"
+                            wire:model.defer="cpf">
                     </div>
 
                     <div class="mb-3">
-                        <label for="password" class="form-label fw-bold">Senha</label>
-                        <input type="password" class="form-control" id="senha" name="senha" placeholder="ex:******"
+                        <label for="password" class="form-label fw-bold">senha</label>
+                        <input type="password" class="form-control" id="senha" name="senha" placeholder="ex:****"
                             wire:model.defer="senha">
                     </div>
                     <div class="mb-3">

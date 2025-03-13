@@ -12,8 +12,8 @@
 
 </head>
 
-<body>
-    <nav class="navbar bg-body-tertiary; bg-success">
+<body style="background-color:darkorange">
+    <nav class="navbar bg-body-tertiary; bg-danger">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
                 <img src="" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
