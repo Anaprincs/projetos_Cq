@@ -17,7 +17,7 @@ class Index extends Component
 
     protected $listeners = [
         'abrirModalEdicao',
-        'tarefaAtualizada' => 'render'
+        'cadastroAtualizada' => 'render'
     ];
 
     public function render()

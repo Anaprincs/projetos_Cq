@@ -3,6 +3,7 @@
 namespace App\Livewire\Aluno;
 
 use App\Models\Aluno;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Edit extends Component
@@ -18,7 +19,7 @@ class Edit extends Component
 
     protected $listeners =
     [
-        'editarTarefa',
+        'editarCadastro',
         'closeEditModal' => 'fecharModal'
     ];
 
@@ -31,7 +32,7 @@ class Edit extends Component
         return view('livewire.aluno.edit');
     }
 
-    public function editarTarefa($alunosId)
+    public function editarCadastro($alunosId)
     {
         $alunos = Aluno::find($alunosId);
 
@@ -50,10 +51,10 @@ class Edit extends Component
 
     public function salvar()
     {
-        $tarefa = Aluno::find($this->tarefaId);
+        $aluno = Aluno::find($this->alunoId);
 
-        if ($tarefa) {
-            $tarefa->update([
+        if ($aluno) {
+            $aluno->update([
                 'nome' => $this->nome,
                 'data_nascimento' => $this->data_nascimento,
                 'rm' => $this->rm,
@@ -66,5 +67,8 @@ class Edit extends Component
             $this->dispatch('fecharModalEdicao');
             session()->flash('message', 'Cadastro Atualizado');
         }
+    
+        if (Auth::check() && Auth::user()->$this == $user-> id);
     }
+
 }

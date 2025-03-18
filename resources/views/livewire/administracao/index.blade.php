@@ -1,15 +1,7 @@
 <div class="mt-5">
     {{-- margin top --}}
-    <nav class="navbar bg-body-tertiary">
-        <div class="container-fluid">
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-          </form>
-        </div>
-      </nav>
     <div class="card">
-        <div class="card-body">   
+        <div class="card-body">
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -21,27 +13,27 @@
                 </thead>
                 <tbody>
                     <tr>
-                        @foreach ($professor as $p)
-                            <td>{{ $p->id }} </td>
-                            <td> {{ $p->nome }}</td>
-                            <td> {{ $p->cpf }}</td>
+                        @foreach ($admin as $a)
+                            <td>{{ $a->id }} </td>
+                            <td> {{ $a->nome }}</td>
+                            <td> {{ $a->cpf }}</td>
                            
                            
                             <td>
                                 <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#viewModal"
-                                    wire:click="abrirModalVisualizar({{ $p->id }})">Vizualizar</button>
+                                    wire:click="abrirModalVisualizar({{ $a->id }})">Vizualizar</button>
                                 <button class="btn btn-primary btn-sm" data-bs-toggle="modal"
-                                    data-bs-target="#editModal" wire:click="abrirModalEdicao({{$p->id}})">Editar</button>
+                                    data-bs-target="#editModal" wire:click="abrirModalEdicao({{$a->id}})">Editar</button>
 
                                 <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal"
-                                 wire:click="abrirModalExclusao({{$p->id}})">Excluir</button>
+                                 wire:click="abrirModalExclusao({{$a->id}})">Excluir</button>
                             </td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
 
-<livewire:professor.edit> 
+<livewire:administracao.edit> 
 
 
         </div>
@@ -89,3 +81,4 @@
         </div>
     </div>
 </div>
+

@@ -11,6 +11,7 @@ class Create extends Component
     public $data_nascimento;
     public $email;
     public $rm;
+    public $serie;
     public $senha;
     public $confirmar_senha;
 
@@ -27,6 +28,7 @@ class Create extends Component
             'email' => $this->email,
             'rm' => $this->rm,
             'senha' => $this->senha,
+            'serie' => $this->serie,
             'confirmar_senha' => $this->confirmar_senha
         ]);
 

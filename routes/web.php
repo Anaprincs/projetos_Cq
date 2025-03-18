@@ -1,5 +1,7 @@
 <?php
 
+use App\Livewire\Administracao\Create as AdministracaoCreate;
+use App\Livewire\Administracao\Index as AdministracaoIndex;
 use App\Livewire\Aluno\Create;
 use App\Livewire\Aluno\Edit;
 use App\Livewire\Aluno\Index;
@@ -29,6 +31,11 @@ Route::get('/user', function(){
 Route::get('/professor/create', ProfessorCreate::class);
 Route::get('/professor/index', ProfessorIndex::class);
 Route::get('/professor/edit', ProfessorEdit::class);
+
+
+
+Route::get('/admin/create', AdministracaoCreate::class);
+Route::get('/admin/index', AdministracaoIndex::class);
 
 
 

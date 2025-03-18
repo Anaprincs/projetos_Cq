@@ -17,6 +17,7 @@ return new class extends Migration
             $table->date('data_nascimento')->nullable(false);
             $table->string('email', 45)->nullable(false)->unique();
             $table->string('rm', 4)->nullable(false)->unique();
+            $table->string('serie', 10)->nullable(false)->unique();
             $table->string('senha', 8)->nullable(false);
             $table->string('confirmar_senha', 8)->nullable(false);
             $table->timestamps();
