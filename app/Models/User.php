@@ -3,7 +3,10 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Illuminate\Contracts\Hashing\Hasher;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -13,6 +16,8 @@ class User extends Authenticatable
 
     const ROLE_ADMIN = 'admin';
     const ROLE_USER = 'user';
+    const ROLE_ALUNO = 'aluno';
+    const ROLE_PROFESSOR = 'professor';
 
 
 
@@ -22,9 +27,9 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
         'email',
         'password',
+        'role'
     ];
 
     /**
@@ -53,4 +58,16 @@ class User extends Authenticatable
     public function isAdmin(){
         return $this->role === self::ROLE_ADMIN;
     }
-}
+
+    public function isAluno(){
+        return $this->role === self::ROLE_ALUNO;
+    }
+
+    public function isProfessor(){
+        return $this->role === self::ROLE_PROFESSOR;
+    }
+
+    public function aluno(){
+        return $this->hasOne(Aluno::class);
+    }
+} // role - especificar oq é fixando 

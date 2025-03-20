@@ -44,14 +44,7 @@
                     <div class="mb-3">
                         <label for="password" class="form-label fw-bold">Senha</label>
                         <input type="password" class="form-control" id="senha" name="senha" placeholder="ex:******"
-                            wire:model.defer="senha">
-                    </div>
-        
-
-                    <div class="mb-3">
-                        <label for="password" class="form-label fw-bold">Confirmar Senha</label>
-                        <input type="password" class="form-control" id="confirmar_senha" name="confirmar_senha"
-                            placeholder="ex:******" wire:model.defer="confirmar_senha">
+                            wire:model.defer="password">
                     </div>
 
                     <div class="mb-3 text-center">

@@ -3,6 +3,7 @@
 namespace App\Livewire\Aluno;
 
 use App\Models\Aluno;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
@@ -13,7 +14,7 @@ class Edit extends Component
     public $data_nascimento;
     public $email;
     public $rm;
-    public $senha;
+    public $password;
     public $confirmar_senha;
 
 
@@ -23,7 +24,8 @@ class Edit extends Component
         'closeEditModal' => 'fecharModal'
     ];
 
-    public function fecharModal(){
+    public function fecharModal()
+    {
         $this->dispatch('hideModal');
     }
 
@@ -32,43 +34,30 @@ class Edit extends Component
         return view('livewire.aluno.edit');
     }
 
-    public function editarCadastro($alunosId)
-    {
-        $alunos = Aluno::find($alunosId);
+    public function mount(){
+        $aluno = Aluno::find(Auth::user()->aluno->id);
+   
+        $this->alunoId = $aluno->id;
+        $this->nome = $aluno->nome;
+        $this->data_nascimento = $aluno->data_nascimento;
+        $this->email = $aluno->user->email;
+        $this->rm = $aluno->rm;
+        $this->password = $aluno->user->password;
+        $this->confirmar_senha = $aluno->confirmar_senha;
 
-        if ($alunos) {
-            $this->alunoId=$alunos->alunoId;
-            $this->nome = $alunos->nome;
-            $this->email = $alunos->email;
-            $this->data_nascimento = $alunos->data_nascimento;
-            $this->senha = $alunos->senha;
-            $this->confirmar_senha = $alunos->confirmar_senha;
-            $this->rm = $alunos->rm;
-
-            $this->dispatch('openEditModal');
-        }
-    }
+    
+       }
 
     public function salvar()
     {
         $aluno = Aluno::find($this->alunoId);
 
-        if ($aluno) {
-            $aluno->update([
-                'nome' => $this->nome,
-                'data_nascimento' => $this->data_nascimento,
-                'rm' => $this->rm,
-                'email' => $this->email,
-                'senha' => $this->senha,
-                'confirmar_senha' => $this->confirmar_senha
-            ]);
+        $aluno->nome = $this->nome;
+        $aluno->nome = $this->email;
+        $aluno->nome = $this->senha;
+        $aluno->save();
+        $aluno->user->save();
+        session()->flash('succes', 'Tarefa Atualizada');
 
-            $this->dispatch('CadastroAtualizado');
-            $this->dispatch('fecharModalEdicao');
-            session()->flash('message', 'Cadastro Atualizado');
-        }
-    
-        if (Auth::check() && Auth::user()->$this == $user-> id);
     }
-
 }

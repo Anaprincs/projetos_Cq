@@ -13,15 +13,15 @@ return new class extends Migration
     {
         Schema::create('alunos', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('user_id')->unsigned()->nullable(false); // campo relacionado a tabela user - chave estrangeira
             $table->string('nome', 45)->nullable(false);
             $table->date('data_nascimento')->nullable(false);
-            $table->string('email', 45)->nullable(false)->unique();
             $table->string('rm', 4)->nullable(false)->unique();
             $table->string('serie', 10)->nullable(false)->unique();
-            $table->string('senha', 8)->nullable(false);
-            $table->string('confirmar_senha', 8)->nullable(false);
+            $table->foreign('user_id')->references('id')->on('users'); // conexão com a tabela user
             $table->timestamps();
         });
+
     }
 
     /**

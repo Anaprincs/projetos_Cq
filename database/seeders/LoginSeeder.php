@@ -16,14 +16,12 @@ class LoginSeeder extends Seeder
     public function run(): void
     {
         User::Create([
-            'name' => 'Admin',
             'email' => 'admin@teste.com',
             'password' =>Hash::make(123456),
             'role' =>'admin'
         ]);
 
         User::Create([
-            'name' => 'User',
             'email' => 'user@teste.com',
             'password' => Hash::make(123456),
             'role' =>'user'

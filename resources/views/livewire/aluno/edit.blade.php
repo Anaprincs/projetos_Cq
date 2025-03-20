@@ -1,67 +1,61 @@
-<div wire:ignore.self class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true"
-    wire:listener="hideModal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Editar Cadastro</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body">
-                <div class="mb-3">
-                    <label class="form-label">Nome</label>
-                    <input type="text" class="form-control" wire:model="nome">
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Data de Nascimento</label>
-                    <input type="date" class="form-control" wire:model="data_nascimento">
-                </div>
-                <div class="mb-3 fw-bold ">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" name="email"
-                        placeholder="ex:xxx@xxx.com" wire:model.defer="email">
-                </div>
-                <div class="mb-3">
-                    <label for="nome" class="form-label fw-bold">RM</label>
-                    <input type="text" class="form-control" id="rm" name="rm" placeholder="ex:****"
-                        wire:model.defer="rm">
-                </div>
+<div>
 
-                <div class="mb-3">
-                    <label for="senha" class="form-label fw-bold">Senha</label>
-                    <input type="text" class="form-control" id="senha" name="senha" placeholder="ex:******"
-                        wire:model.defer="senha">
-                </div>
-                <div class="mb-3">
-                    <label for="confirmar_senha" class="form-label fw-bold">Confirmar Senha</label>
-                    <input type="text" class="form-control" id="confirmar_senha" name="confirmar_senha"
-                        placeholder="ex:******" wire:model.defer="confirmar_senha">
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary" wire:click="salvar">Salvar</button>
+    @if (session()->has('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif 
+
+    {{-- codigo para não abrir modal --}}
+
+    <div class="col-md-6 mx-auto">
+        <div class="card bg-danger" >
+            <h5 class="card-header fw-bold text-center" $font-family="sans-serif">Cadastro de Usuário</h5>
+            <div class="card-body">
+                <form wire:submit.prevent="store">
+                    <div class="mb-3">
+                        <label for="nome" class="form-label fw-bold text-center">Nome</label>
+                        <input type="text" class="form-control" id="nome" name="nome"
+                            placeholder="ex:Cadastro" wire:model.defer="nome">
+                    </div>
+
+                    <div class="mb-3 fw-bold ">
+                        <label for="data_nascimento">Data de Nascimento</label>
+                        <input type="date" name="data_nascimento" id="data_nascimento" class="form-control"
+                            wire:model.defer="data_nascimento">
+                    </div>
+
+                    <div class="mb-3 fw-bold ">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" name="email"
+                            placeholder="ex:xxx@xxx.com" wire:model.defer="email">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="rm" class="form-label fw-bold">RM</label>
+                        <input type="text" class="form-control" id="rm" name="rm" placeholder="ex:****"
+                            wire:model.defer="rm">
+                    </div>
+                    <div class="mb-3">
+                        <label for="serie" class="form-label fw-bold">Serie</label>
+                        <input type="text" class="form-control" id="serie" name="serie" 
+                            wire:model.defer="serie">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="password" class="form-label fw-bold">Senha</label>
+                        <input type="password" class="form-control" id="senha" name="senha" placeholder="ex:******"
+                            wire:model.defer="password">
+                    </div>
+
+                    <div class="mb-3 text-center">
+                        <button type="submit" class="btn btn-success"> Cadastrar</button>
+                    </div>
+
+                </form>
             </div>
         </div>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            Livewire.on('fecharModalEdicao', function() {
-                var modal = document.getElementById('editModal');
-                var modalInstance = bootstrap.Modal.getInstance(modal);
-
-                if(modalInstance){
-                    modalInstance.hide();
-                }  else { 
-                    var newModal = new bootstrap.modal(modal); 
-                    newModal.hide(); 
-                }
-
-                document.querySelectorAll('.modal-backdrop')
-                .forEach(el => el.remove()); 
-                document.body.classList.remove('modal-open');
-            });
-        });
-    </script>
-
+    
 </div>
